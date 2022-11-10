@@ -20,6 +20,7 @@ const Signup = () => {
         console.log(data)
     }
 
+
     
        
     return ( 
@@ -37,7 +38,7 @@ const Signup = () => {
         <input className='block rounded-lg border  p-2 my-2' type="password" placeholder='Password' {...register("password")}/>
         <p className='text-gray-700'>{errors.confirmpassword?.message}</p>
         <input className='block rounded-lg border  p-2 my-2' type="password" placeholder='Confirm Password' {...register("confirmpassword")}/>
-        <button className='block rounded-r-full rounded-l-full border bg-sky-400 px-6 py-2 my-4' type="submit">Sign Up</button>
+        <button className='block rounded-r-full rounded-l-full border bg-sky-400 px-6 py-2 my-4 cursor-pointer transform hover:scale-110 transition duration-100' type="submit">Sign Up</button>
         {/* <input className='block rounded-lg border  px-2 py-2 my-2' type="submit" /> */}
         </form>                
                             

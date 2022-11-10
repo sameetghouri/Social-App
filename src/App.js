@@ -5,6 +5,7 @@ import Profile from './Profile';
 import Signup from './Signup';
 import Signin from './Signin';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Createpost from './CreatePost';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path='/profile' element={<Profile/>} />
       <Route path='/signin' element={<Signin/>} />
       <Route path='/signup' element={<Signup/>} />
+      <Route path='/post' element={<Createpost/>} />
       
       
       <Route path='*' element={<div className="text-4xl text-center">Page Not Found</div>} />

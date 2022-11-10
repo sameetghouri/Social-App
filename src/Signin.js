@@ -32,16 +32,12 @@ const Signin = () => {
                             <label className="mt-3 mb-1 text-lg text-center">Password</label>
                             <input className="p-2 rounded-lg shadow-lg" type="password" value={pass} required onChange = {(e) => setpass(e.target.value)}/>
                             
-                            <button onClick={handlesubmit} className="bg-zinc-400 mt-10 mx-4  px-4 py-2 rounded-r-full rounded-l-full">Login</button>
+                            <button onClick={handlesubmit} className="bg-sky-400 mt-10 mx-12  px-4 py-2 rounded-r-full rounded-l-full cursor-pointer transform hover:scale-110 transition duration-100">Login</button>
                             </> }
 
                             
                             </form>
-                            
-                            
-                                
-                
-        </div>
+                        </div>
 </div> 
      );
 }
