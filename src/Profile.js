@@ -5,13 +5,13 @@ import img2 from "./images/hero.jpg"
 const Profile = () => {
     const pname = useSelector((state)=>state?.counter?.value?.usernam)
     return ( 
-    <div className="col-span-4  bg-blue-400 h-screen">
+    <div className="col-span-4 bg-gradient-to-t from-emerald-300 to-emerald-400 h-screen">
             
             <div class="flex flex-col ">
                             
                             <div class=" shadow-2xl  bg-gray-100 p-10 mx-5 mt-3  border-b-8 rounded-lg flex flex-col items-center ">
                                 <div className="h-28 ">
-                                <div className=" w-20 h-20 rounded-full overflow-hidden">
+                                <div className=" w-24 h-24 rounded-full overflow-hidden">
                                   <img  src={img1} alt="DP"></img> 
                                   </div>
                                   </div>

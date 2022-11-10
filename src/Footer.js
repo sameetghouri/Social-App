@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     
     return ( 
-        <div className="hidden md:block md:col-span-2 bg-gray-200">
+        <div className="hidden md:block md:col-span-2 bg-gray-100">
         
         <nav className=" flex flex-col items-center pt-4 ">
             
