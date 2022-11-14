@@ -6,6 +6,10 @@ import * as yup from 'yup'
 const Signup = () => {
    
     const [newname, setnewname]= useState("");
+    const [password, setpassword] = useState("");
+    const [email, setemail]= useState("");
+    const [age, setage]= useState("");
+
     const schema =yup.object().shape({
         fullname: yup.string().required("Full Name Required"),
         email: yup.string().email().required('Email Requied'),
@@ -16,16 +20,39 @@ const Signup = () => {
     const {register, handleSubmit, formState:{errors}} = useForm({
         resolver: yupResolver(schema),
     });
-    const onSubmit = (data) =>{
-        console.log(data)
+    const onSubmit = async () =>{
+        
+           
     }
 
-
+    const submitData = async ()=>{
+        let headersList = {
+            "Accept": "*/*",
+            "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+            "Content-Type": "application/json"
+           }
+           
+           let bodyContent = JSON.stringify({
+             "name":newname,
+             "email":email,
+             "password":password,
+             "age":age
+           });
+           
+           let response = await fetch("http://Localhost:3001/users/register", { 
+             method: "POST",
+             body: bodyContent,
+             headers: headersList
+           });
+           
+           let reponsedata = await response.text();
+           console.log("Hello from DF",  reponsedata);
+    }
     
        
     return ( 
         <div className="col-span-4 flex items-center justify-center bg-gradient-to-t from-emerald-300 to-emerald-400 h-screen">
-        <div className="w-4/5 h-5/6 shadow-lg bg-gray-200 p-8 rounded-lg overflow-hidden">
+        <div className="w-4/5 h-11/12 shadow-lg bg-gray-200 p-8 rounded-lg overflow-hidden">
         <h1 className="mb-3 text-2xl text-center">Sign Up</h1>
             <form onSubmit={handleSubmit(onSubmit)} className=" flex flex-col items-center" >
         <p className='text-gray-700'>{errors.fullname?.message}</p>
@@ -41,7 +68,14 @@ const Signup = () => {
         <button className='block rounded-r-full rounded-l-full border bg-sky-400 px-6 py-2 my-4 cursor-pointer transform hover:scale-110 transition duration-100' type="submit">Sign Up</button>
         {/* <input className='block rounded-lg border  px-2 py-2 my-2' type="submit" /> */}
         </form>                
-                            
+        
+            <div>
+            <input className="w-full border-2" type="text" onChange={(e)=>setnewname(e.target.value)} />
+            <input className="w-full border-2" type="text" onChange={(e)=>setpassword(e.target.value)} />
+            <input className="w-full border-2" type="text" onChange={(e)=>setage(e.target.value)} />
+            <input className="w-full border-2" type="text" onChange={(e)=>setemail(e.target.value)} />
+            <button className="px-4 bg-green-500" onClick={submitData}>Submit</button>
+            </div>        
                             
                             
                             

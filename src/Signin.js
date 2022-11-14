@@ -8,12 +8,37 @@ const Signin = () => {
     const [pass, setpass] = useState("");
     const dispatch = useDispatch();
 
-    const handlesubmit = (e) => {
-        e.preventDefault();
-        dispatch(login({usernam:newname}));
+    const handlesubmit =async () => {
+       
+        let headersList = {
+            "Accept": "*/*",
+            "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+            "Content-Type": "application/json"
+           }
+           
+           let bodyContent =JSON.stringify({
+             "email":newname,
+             "password":pass
+           });
+           
+           let response = await fetch("http://localhost:3001/users/login", { 
+             method: "POST",
+             body: bodyContent,
+             headers: headersList
+           });
+           
+           let data = await response.text();
+           console.log(data);
+           
         setnewname('');
         setpass('');
         }
+    // const handlesubmit = (e) => {
+    //     e.preventDefault();
+    //     dispatch(login({usernam:newname}));
+    //     setnewname('');
+    //     setpass('');
+    //     }
     return ( 
         <div className="col-span-4 flex items-center justify-center bg-gradient-to-t from-emerald-300 to-emerald-400 h-screen">
             
@@ -22,7 +47,7 @@ const Signin = () => {
                         <div className="w-4/5 h-2/3 shadow-lg bg-gray-200 p-10 m-4 rounded-lg flex flex-col items-center ">
                             <h1 className="m-3 text-2xl">Login As: {pname}</h1>
                             
-                            <form onSubmit={handlesubmit} className="flex flex-col">
+                            {/* <form onSubmit={handlesubmit} className="flex flex-col"> */}
 
                             {!pname && <>
                                 
@@ -36,7 +61,7 @@ const Signin = () => {
                             </> }
 
                             
-                            </form>
+                            {/* </form> */}
                         </div>
 </div> 
      );

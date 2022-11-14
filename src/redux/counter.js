@@ -10,8 +10,13 @@ export const counterSlice = createSlice({
   reducers: {
    
     login: (state,action) => {
+
+      fetch()
+
       state.value = action.payload;
+
     },
+
     logout: (state) => {
       state.value = initialState.value;
     },
